@@ -1,0 +1,29 @@
+name: Project G Plugin Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  upload:
+    name: Upload Plugin in Server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch from GitHub 
+        uses: actions/checkout@v2
+          
+      - name: Creating Resource Pack
+        run: |
+          rm -rf .github
+          zip -r ProjectG.zip ./*
+      - name: Upload Resource Pack
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.server_url }}
+          username: ${{ secrets.ssh_user }}
+          ssh_private_key: ${{ secrets.ssh_secret }}
+          port: 22
+          local_path: './ProjectG.zip'
+          remote_path: '/var/www/html/'
