@@ -1,4 +1,4 @@
-name: Project G Plugin Deploy
+name: Project G Resource Pack Deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   upload:
-    name: Upload Plugin in Server
+    name: Upload Resource Pack in Server
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main branch from GitHub 
