@@ -26,4 +26,4 @@ jobs:
           ssh_private_key: ${{ secrets.ssh_secret }}
           port: 22
           local_path: './ProjectG.zip'
-          remote_path: '/var/www/html/'
+          remote_path: '/home/ubuntu/cdn/'
